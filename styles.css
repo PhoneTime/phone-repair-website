@@ -2,7 +2,6 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
     color: #333;
 }
 
@@ -24,7 +23,7 @@ form label {
     margin: 10px 0 5px;
 }
 
-form select, form button {
+form select, form input, form textarea, form button {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -46,4 +45,13 @@ form button:hover {
     margin-top: 20px;
     font-size: 1.2em;
     color: #007BFF;
+}
+
+#booking-button button {
+    background: green;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
 }

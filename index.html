@@ -3,42 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phone Repair Price Checker</title>
+    <title>Phone Repair & Booking</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Phone Repair Price Checker</h1>
+        <h1>Phone Repair Services</h1>
     </header>
 
     <section id="repair">
         <h2>Repair Services</h2>
         <form id="repair-form">
             <label for="brand">Select Phone Brand:</label>
-            <select id="brand" onchange="updateModels()">
+            <select id="brand" onchange="updateCategories()">
                 <option value="">-- Select Brand --</option>
                 <option value="apple">Apple</option>
                 <option value="samsung">Samsung</option>
-                <option value="huawei">Huawei</option>
+                <option value="google">Google</option>
+                <option value="oppo">Oppo</option>
+            </select>
+
+            <label for="category">Select Category (if applicable):</label>
+            <select id="category" onchange="updateModels()">
+                <option value="">-- Select Category --</option>
             </select>
 
             <label for="model">Select Phone Model:</label>
-            <select id="model">
+            <select id="model" onchange="updateColors()">
                 <option value="">-- Select Model --</option>
+            </select>
+
+            <label for="color">Select Phone Color:</label>
+            <select id="color">
+                <option value="">-- Select Color --</option>
             </select>
 
             <label for="part">Select Part to Repair:</label>
             <select id="part">
                 <option value="">-- Select Part --</option>
-                <option value="screen">Screen Replacement</option>
-                <option value="battery">Battery Replacement</option>
-                <option value="back">Back Cover Repair</option>
+                <option value="front_screen">Front Screen</option>
+                <option value="battery">Battery</option>
+                <option value="back_glass">Back Glass</option>
+                <option value="charging_port">Charging Port</option>
+                <option value="rear_camera">Rear Camera</option>
+                <option value="camera_lens">Camera Lens</option>
+                <option value="front_camera">Front Camera</option>
+                <option value="ear_speaker">Ear Speaker</option>
+                <option value="loud_speaker">Loud Speaker</option>
             </select>
 
             <button type="button" onclick="showRepairPrice()">Check Price</button>
         </form>
 
         <div id="repair-price"></div>
+        <div id="booking-button"></div>
+    </section>
+
+    <section id="booking" style="display:none;">
+        <h2>Book a Repair Appointment</h2>
+        <form id="booking-form" onsubmit="submitBooking(event)">
+            <label for="customer-name">Name:</label>
+            <input type="text" id="customer-name" placeholder="Your Name" required>
+
+            <label for="customer-phone">Phone:</label>
+            <input type="tel" id="customer-phone" placeholder="Your Phone Number" required>
+
+            <label for="customer-address">Address:</label>
+            <textarea id="customer-address" placeholder="Your Address" required></textarea>
+
+            <input type="hidden" id="customer-device">
+            <input type="hidden" id="customer-color">
+            <input type="hidden" id="customer-part">
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="booking-confirmation"></div>
     </section>
 
     <footer>
