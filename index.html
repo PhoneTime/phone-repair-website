@@ -3,70 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phone Repair & Accessories Store</title>
+    <title>Phone Repair Price Checker</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Welcome to Your Phone Repair Store</h1>
-        <nav>
-            <ul>
-                <li><a href="#repair">Repair Services</a></li>
-                <li><a href="#accessories">Accessories Store</a></li>
-                <li><a href="#appointment">Book Appointment</a></li>
-            </ul>
-        </nav>
+        <h1>Phone Repair Price Checker</h1>
     </header>
 
     <section id="repair">
         <h2>Repair Services</h2>
         <form id="repair-form">
             <label for="brand">Select Phone Brand:</label>
-            <select id="brand">
+            <select id="brand" onchange="updateModels()">
+                <option value="">-- Select Brand --</option>
                 <option value="apple">Apple</option>
                 <option value="samsung">Samsung</option>
                 <option value="huawei">Huawei</option>
             </select>
 
-            <label for="model">Enter Phone Model:</label>
-            <input type="text" id="model" placeholder="e.g., iPhone 13 Pro">
+            <label for="model">Select Phone Model:</label>
+            <select id="model">
+                <option value="">-- Select Model --</option>
+            </select>
 
-            <label for="imei">Enter IMEI (Optional):</label>
-            <input type="text" id="imei" placeholder="e.g., 123456789012345">
+            <label for="part">Select Part to Repair:</label>
+            <select id="part">
+                <option value="">-- Select Part --</option>
+                <option value="screen">Screen Replacement</option>
+                <option value="battery">Battery Replacement</option>
+                <option value="back">Back Cover Repair</option>
+            </select>
 
-            <button type="button" onclick="showPrices()">Check Repair Prices</button>
+            <button type="button" onclick="showRepairPrice()">Check Price</button>
         </form>
-        <div id="repair-prices"></div>
-    </section>
 
-    <section id="accessories">
-        <h2>Accessories Store</h2>
-        <div class="product">
-            <h3>Custom Phone Cases</h3>
-            <p>Starting at: $19.99</p>
-        </div>
-        <div class="product">
-            <h3>Screen Protectors</h3>
-            <p>Starting at: $9.99</p>
-        </div>
-    </section>
-
-    <section id="appointment">
-        <h2>Book a Repair Appointment</h2>
-        <form id="appointment-form">
-            <label for="date">Select Date:</label>
-            <input type="date" id="date">
-
-            <label for="time">Select Time:</label>
-            <input type="time" id="time">
-
-            <button type="button" onclick="bookAppointment()">Confirm Appointment</button>
-        </form>
-        <div id="appointment-confirmation"></div>
+        <div id="repair-price"></div>
     </section>
 
     <footer>
-        <p>&copy; 2024 Your Phone Repair Store</p>
+        <p>&copy; 2024 Phone Repair Store</p>
     </footer>
 
     <script src="script.js"></script>
