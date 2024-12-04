@@ -9,21 +9,31 @@ const models = {
             "iPhone 14 Pro",
             "iPhone 14 Plus",
             "iPhone 14",
-            // Add other models here...
+            "iPhone 13 Pro Max",
+            "iPhone 13 Pro",
+            "iPhone 13",
             "iPhone SE"
         ],
         ipad: ["iPad Pro", "iPad Air", "iPad Mini", "iPad"]
     },
-    samsung: ["Galaxy S23", "Galaxy S22", "Galaxy Note 20"],
-    google: ["Pixel 7", "Pixel 6", "Pixel 5"],
-    oppo: ["Find X5", "Reno8 Pro", "A57"]
+    samsung: {
+        galaxy: ["Galaxy S23", "Galaxy S22", "Galaxy Note 20", "Galaxy Z Fold 4"]
+    },
+    google: {
+        pixel: ["Pixel 7 Pro", "Pixel 6 Pro", "Pixel 5", "Pixel 4"]
+    },
+    oppo: {
+        find: ["Find X5 Pro", "Find X3 Neo"],
+        reno: ["Reno8 Pro", "Reno7 Z"],
+        a_series: ["A57", "A16"]
+    }
 };
 
 const colors = {
     "iPhone 15 Pro Max": ["Black", "Silver", "Blue", "Titanium"],
-    "iPhone 14 Pro Max": ["Gold", "Purple", "Silver", "Black"],
     "Galaxy S23": ["Green", "Lavender", "White", "Phantom Black"],
-    // Add colors for other models...
+    "Pixel 7 Pro": ["Snow", "Obsidian", "Hazel"],
+    "Find X5 Pro": ["Black", "White"]
 };
 
 const repairPrices = {
@@ -46,9 +56,13 @@ function updateCategories() {
     categorySelect.innerHTML = '<option value="">-- Select Category --</option>';
     modelSelect.innerHTML = '<option value="">-- Select Model --</option>';
 
-    if (brand === "apple") {
-        categorySelect.innerHTML += `<option value="iphone">iPhone</option>`;
-        categorySelect.innerHTML += `<option value="ipad">iPad</option>`;
+    if (models[brand]) {
+        for (const category in models[brand]) {
+            const option = document.createElement("option");
+            option.value = category;
+            option.textContent = capitalizeFirstLetter(category);
+            categorySelect.appendChild(option);
+        }
     }
 }
 
@@ -131,4 +145,8 @@ function submitBooking(event) {
 
     window.open(`mailto:phone.time.au@gmail.com?subject=Repair Booking&body=${encodeURIComponent(emailBody)}`);
     alert("Your booking request has been submitted!");
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
